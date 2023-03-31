@@ -48,17 +48,18 @@
             this.RemainingTimeText.TabIndex = 1;
             this.RemainingTimeText.Text = "--:--";
             // 
-            // PomodoroButton
+            // StartButton
             // 
-            this.PomodoroButton.Font = new System.Drawing.Font("メイリオ", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.PomodoroButton.Location = new System.Drawing.Point(176, 16);
-            this.PomodoroButton.Margin = new System.Windows.Forms.Padding(5);
-            this.PomodoroButton.Name = "PomodoroButton";
-            this.PomodoroButton.Size = new System.Drawing.Size(128, 32);
-            this.PomodoroButton.TabIndex = 6;
-            this.PomodoroButton.Text = "Pomodoro";
-            this.PomodoroButton.UseVisualStyleBackColor = true;
-            this.PomodoroButton.Click += new System.EventHandler(this.PomodoroButton_Click);
+            this.StartButton.Cursor = System.Windows.Forms.Cursors.No;
+            this.StartButton.Font = new System.Drawing.Font("メイリオ", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.StartButton.Location = new System.Drawing.Point(176, 90);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(5);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(128, 32);
+            this.StartButton.TabIndex = 2;
+            this.StartButton.Text = "Synchronous Start";
+            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // ResetButton
             // 
@@ -84,18 +85,17 @@
             this.PauseButton.UseVisualStyleBackColor = true;
             this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
             // 
-            // StartButton
+            // PomodoroButton
             // 
-            this.StartButton.Cursor = System.Windows.Forms.Cursors.No;
-            this.StartButton.Font = new System.Drawing.Font("メイリオ", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.StartButton.Location = new System.Drawing.Point(176, 90);
-            this.StartButton.Margin = new System.Windows.Forms.Padding(5);
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(128, 32);
-            this.StartButton.TabIndex = 2;
-            this.StartButton.Text = "Synchronous Start";
-            this.StartButton.UseVisualStyleBackColor = true;
-            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+            this.PomodoroButton.Font = new System.Drawing.Font("メイリオ", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.PomodoroButton.Location = new System.Drawing.Point(176, 16);
+            this.PomodoroButton.Margin = new System.Windows.Forms.Padding(5);
+            this.PomodoroButton.Name = "PomodoroButton";
+            this.PomodoroButton.Size = new System.Drawing.Size(128, 32);
+            this.PomodoroButton.TabIndex = 6;
+            this.PomodoroButton.Text = "Pomodoro";
+            this.PomodoroButton.UseVisualStyleBackColor = true;
+            this.PomodoroButton.Click += new System.EventHandler(this.PomodoroButton_Click);
             // 
             // CustomTimePicker
             // 
@@ -138,7 +138,9 @@
             this.MaximizeBox = false;
             this.Name = "CountdownTimerForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "CountdownTimer";
+            this.Load += new System.EventHandler(this.CountdownTimerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

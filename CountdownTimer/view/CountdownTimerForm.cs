@@ -41,6 +41,18 @@ namespace MyPrototype.CountdownTimer.view
         }
 
         /// <summary>
+        /// move the control to the bottom left corner (for personal use)
+        /// </summary>
+        private void MoveControlToLowerLeftCorner()
+        {
+            System.Drawing.Rectangle areaPosition = Screen.GetWorkingArea(this);
+            Debug.WriteLine($"Size:{areaPosition.Size}");
+
+            this.Top = areaPosition.Height - this.Height;
+            Debug.WriteLine($"Control-Left:{this.Left} Control-Right:{this.Right} Control-Top:{this.Top} Control-Bottom:{this.Bottom}");
+        }
+
+        /// <summary>
         /// pomodoro start or resume button
         /// </summary>
         /// <param name="sender"></param>
@@ -174,6 +186,16 @@ namespace MyPrototype.CountdownTimer.view
 
             PlaySimpleSound();
             MessageBox.Show("It's time.", "synchronous mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// move to a position that does not interfere with work during initial startup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CountdownTimerForm_Load(object sender, EventArgs e)
+        {
+            MoveControlToLowerLeftCorner();
         }
     }
 }
