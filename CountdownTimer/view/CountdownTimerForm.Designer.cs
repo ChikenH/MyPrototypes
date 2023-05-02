@@ -35,6 +35,7 @@
             this.PomodoroButton = new System.Windows.Forms.Button();
             this.CustomTimePicker = new System.Windows.Forms.DateTimePicker();
             this.TimeSetButton = new System.Windows.Forms.Button();
+            this.RemainingTimeProgressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // RemainingTimeText
@@ -121,11 +122,20 @@
             this.TimeSetButton.UseVisualStyleBackColor = true;
             this.TimeSetButton.Click += new System.EventHandler(this.TimeSetButton_Click);
             // 
+            // RemainingTimeProgressBar
+            // 
+            this.RemainingTimeProgressBar.Location = new System.Drawing.Point(16, 61);
+            this.RemainingTimeProgressBar.Name = "RemainingTimeProgressBar";
+            this.RemainingTimeProgressBar.Size = new System.Drawing.Size(128, 23);
+            this.RemainingTimeProgressBar.Step = 1;
+            this.RemainingTimeProgressBar.TabIndex = 9;
+            // 
             // CountdownTimerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(320, 128);
+            this.Controls.Add(this.RemainingTimeProgressBar);
             this.Controls.Add(this.TimeSetButton);
             this.Controls.Add(this.CustomTimePicker);
             this.Controls.Add(this.PomodoroButton);
@@ -154,6 +164,7 @@
         private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.DateTimePicker CustomTimePicker;
         private System.Windows.Forms.Button TimeSetButton;
+        private System.Windows.Forms.ProgressBar RemainingTimeProgressBar;
     }
 }
 

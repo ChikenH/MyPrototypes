@@ -11,12 +11,22 @@ namespace MyPrototype.CountdownTimer.viewmodel
         /// <summary>
         /// timer model
         /// </summary>
-        private model.WorkingTimer _workingTimer;
+        private model.WorkingTimerModel _workingTimer;
 
         /// <summary>
         /// remaining time (in mm:ss format)
         /// </summary>
         private string _remainingTimeSecondsText = string.Empty;
+
+        /// <summary>
+        /// remaining time progressbar maximum
+        /// </summary>
+        private int _remainingTimeProgressBarMax = 0;
+
+        /// <summary>
+        /// remaining time progressbar value
+        /// </summary>
+        private int _remainingTimeProgressBarValue = 0;
 
         /// <summary>
         /// timer view model constructor
@@ -40,7 +50,41 @@ namespace MyPrototype.CountdownTimer.viewmodel
             {
                 _remainingTimeSecondsText = value;
 
-                RaisePropertyChanged("RemainingTimeText");
+                RaisePropertyChanged("RemainingTimeText", value);
+            }
+        }
+
+        /// <summary>
+        /// remaining time progressbar maximum
+        /// </summary>
+        public int RemainingTimeProgressBarMax
+        {
+            get
+            {
+                return _remainingTimeProgressBarMax;
+            }
+            private set
+            {
+                _remainingTimeProgressBarMax = value;
+
+                RaisePropertyChanged("RemainingTimeProgressBarMax", value.ToString());
+            }
+        }
+
+        /// <summary>
+        /// remaining time progressbar value
+        /// </summary>
+        public int RemainingTimeProgressBarValue
+        {
+            get
+            {
+                return _remainingTimeProgressBarValue;
+            }
+            private set
+            {
+                _remainingTimeProgressBarValue = value;
+
+                RaisePropertyChanged("RemainingTimeProgressBarValue", value.ToString());
             }
         }
 
@@ -53,11 +97,12 @@ namespace MyPrototype.CountdownTimer.viewmodel
         /// notify property changed
         /// </summary>
         /// <param name="propertyName">property name</param>
-        public void RaisePropertyChanged(string propertyName)
+        /// <param name="debugValue">value (for debugging)</param>
+        public void RaisePropertyChanged(string propertyName, string debugValue)
         {
             if (PropertyChanged != null)
             {
-                Debug.WriteLine($"PropertyChanged : {propertyName} by \"{RemainingTimeText}\"");
+                Debug.WriteLine($"PropertyChanged : {propertyName} by \"{debugValue}\"");
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
@@ -68,8 +113,9 @@ namespace MyPrototype.CountdownTimer.viewmodel
         /// <param name="time">remaining time (in mm:ss format)</param>
         internal void SetTime(short time)
         {
-            _workingTimer = new model.WorkingTimer(time);
+            _workingTimer = new model.WorkingTimerModel(time);
 
+            _InitializeProgressBar();
             _DisplayRemainingTime();
         }
 
@@ -89,6 +135,17 @@ namespace MyPrototype.CountdownTimer.viewmodel
         private void _DisplayRemainingTime()
         {
             RemainingTimeText = _workingTimer.GetTimeText();
+            RemainingTimeProgressBarValue = _workingTimer.TimeProgressBar.ProgressValue;
+        }
+
+        /// <summary>
+        /// Initialize the maximum value and progress value of the progress bar
+        /// </summary>
+        private void _InitializeProgressBar()
+        {
+            // set the maximum value after initializing the value first, since the value may be out of range
+            RemainingTimeProgressBarValue = _workingTimer.TimeProgressBar.ProgressValue;
+            RemainingTimeProgressBarMax = _workingTimer.TimeProgressBar.MaxValue;
         }
     }
 }

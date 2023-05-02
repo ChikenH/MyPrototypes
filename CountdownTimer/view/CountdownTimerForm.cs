@@ -38,18 +38,84 @@ namespace MyPrototype.CountdownTimer.view
 
             // Re-creating an instance of CountdownTimerFormViewModel breaks data binding
             RemainingTimeText.DataBindings.Add("Text", _countdownTimerFormViewModel, "RemainingTimeText");
+            RemainingTimeProgressBar.DataBindings.Add("Maximum", _countdownTimerFormViewModel, "RemainingTimeProgressBarMax");
+            RemainingTimeProgressBar.DataBindings.Add("Value", _countdownTimerFormViewModel, "RemainingTimeProgressBarValue");
         }
 
         /// <summary>
         /// move the control to the bottom left corner (for personal use)
         /// </summary>
-        private void MoveControlToLowerLeftCorner()
+        private void _MoveControlToLowerLeftCorner()
         {
             System.Drawing.Rectangle areaPosition = Screen.GetWorkingArea(this);
             Debug.WriteLine($"Size:{areaPosition.Size}");
 
             this.Top = areaPosition.Height - this.Height;
             Debug.WriteLine($"Control-Left:{this.Left} Control-Right:{this.Right} Control-Top:{this.Top} Control-Bottom:{this.Bottom}");
+        }
+
+        /// <summary>
+        /// sounds a notification
+        /// </summary>
+        private void _PlaySimpleSound()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+            simpleSound.Play();
+        }
+
+        /// <summary>
+        /// initialize the progress bar settings
+        /// </summary>
+        /// <param name="maximumValue">maximum value of progress bar</param>
+        private void _InitializeProgressBarSetting(short maximumValue)
+        {
+            this.RemainingTimeProgressBar.Maximum = maximumValue;
+            this.RemainingTimeProgressBar.Value = 0;
+        }
+
+        #region event
+        /// <summary>
+        /// move to a position that does not interfere with work during initial startup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CountdownTimerForm_Load(object sender, EventArgs e)
+        {
+            _MoveControlToLowerLeftCorner();
+        }
+
+        /// <summary>
+        /// processing when an interval elapses
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void PomodoroTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (RemainingTimeText.Text == "--:--")
+            {
+                Debug.WriteLine($"{_executionCount} -> {_executionCount % 2}");
+                // pomodoro loop (25 -> 5 -> 25 -> ...)
+                short times = _executionCount % 2 == 0 ? (short)(60 * 25) : (short)(60 * 5);
+
+                await Task.Run(() =>
+                {
+                    Action<short> methodSetTime = new Action<short>(delegate (short x) { _countdownTimerFormViewModel.SetTime(x); });
+                    return Invoke(methodSetTime, times);
+                });
+
+                _executionCount++;
+                if (_executionCount <= 1)
+                {
+                    return;
+                }
+
+                _PlaySimpleSound();
+                MessageBox.Show("It's time.", "Pomodoro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                await Task.Run(() => Invoke(new Action(_countdownTimerFormViewModel.DecrementByOneSecond)));
+            }
         }
 
         /// <summary>
@@ -70,40 +136,6 @@ namespace MyPrototype.CountdownTimer.view
             _pomodoroTimer.Elapsed += PomodoroTimer_Elapsed;
             _pomodoroTimer.AutoReset = true;
             _pomodoroTimer.Enabled = true;
-        }
-
-        /// <summary>
-        /// processing when an interval elapses
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void PomodoroTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            if (RemainingTimeText.Text == "--:--")
-            {
-                Debug.WriteLine($"{_executionCount} -> {_executionCount % 2}");
-                // pomodoro loop (25 -> 5 -> 25 -> ...)
-                short times = _executionCount % 2 == 0 ? (short)(60 * 25) : (short)(60 * 5);
-
-                await Task.Run(() =>
-                {
-                    Action<short> method = new Action<short>(delegate (short x) { _countdownTimerFormViewModel.SetTime(x); });
-                    return Invoke(method, times);
-                });
-
-                _executionCount++;
-                if (_executionCount <= 1)
-                {
-                    return;
-                }
-
-                PlaySimpleSound();
-                MessageBox.Show("It's time.", "Pomodoro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                await Task.Run(() => Invoke(new Action(_countdownTimerFormViewModel.DecrementByOneSecond)));
-            }
         }
 
         /// <summary>
@@ -141,15 +173,6 @@ namespace MyPrototype.CountdownTimer.view
         }
 
         /// <summary>
-        /// sounds a notification
-        /// </summary>
-        private void PlaySimpleSound()
-        {
-            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
-            simpleSound.Play();
-        }
-
-        /// <summary>
         /// reflects the time set in the DataTimePicker
         /// </summary>
         /// <param name="sender"></param>
@@ -184,18 +207,9 @@ namespace MyPrototype.CountdownTimer.view
                 RemainingTimeText.Update();
             }
 
-            PlaySimpleSound();
+            _PlaySimpleSound();
             MessageBox.Show("It's time.", "synchronous mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        /// <summary>
-        /// move to a position that does not interfere with work during initial startup
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CountdownTimerForm_Load(object sender, EventArgs e)
-        {
-            MoveControlToLowerLeftCorner();
-        }
+        #endregion
     }
 }
