@@ -63,16 +63,6 @@ namespace MyPrototype.CountdownTimer.view
             simpleSound.Play();
         }
 
-        /// <summary>
-        /// initialize the progress bar settings
-        /// </summary>
-        /// <param name="maximumValue">maximum value of progress bar</param>
-        private void _InitializeProgressBarSetting(short maximumValue)
-        {
-            this.RemainingTimeProgressBar.Maximum = maximumValue;
-            this.RemainingTimeProgressBar.Value = 0;
-        }
-
         #region event
         /// <summary>
         /// move to a position that does not interfere with work during initial startup

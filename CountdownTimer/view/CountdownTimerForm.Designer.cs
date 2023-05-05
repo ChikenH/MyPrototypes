@@ -41,13 +41,14 @@
             // RemainingTimeText
             // 
             this.RemainingTimeText.AutoSize = true;
-            this.RemainingTimeText.Font = new System.Drawing.Font("Comic Sans MS", 28.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemainingTimeText.Location = new System.Drawing.Point(16, 16);
+            this.RemainingTimeText.Font = new System.Drawing.Font("Comic Sans MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemainingTimeText.Location = new System.Drawing.Point(19, 16);
             this.RemainingTimeText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.RemainingTimeText.Name = "RemainingTimeText";
-            this.RemainingTimeText.Size = new System.Drawing.Size(131, 53);
+            this.RemainingTimeText.Size = new System.Drawing.Size(121, 49);
             this.RemainingTimeText.TabIndex = 1;
             this.RemainingTimeText.Text = "--:--";
+            this.RemainingTimeText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // StartButton
             // 
@@ -94,7 +95,7 @@
             this.PomodoroButton.Name = "PomodoroButton";
             this.PomodoroButton.Size = new System.Drawing.Size(128, 32);
             this.PomodoroButton.TabIndex = 6;
-            this.PomodoroButton.Text = "Pomodoro";
+            this.PomodoroButton.Text = "Start-Pomodoro";
             this.PomodoroButton.UseVisualStyleBackColor = true;
             this.PomodoroButton.Click += new System.EventHandler(this.PomodoroButton_Click);
             // 
@@ -124,9 +125,10 @@
             // 
             // RemainingTimeProgressBar
             // 
-            this.RemainingTimeProgressBar.Location = new System.Drawing.Point(16, 61);
+            this.RemainingTimeProgressBar.Location = new System.Drawing.Point(16, 64);
+            this.RemainingTimeProgressBar.MarqueeAnimationSpeed = 1;
             this.RemainingTimeProgressBar.Name = "RemainingTimeProgressBar";
-            this.RemainingTimeProgressBar.Size = new System.Drawing.Size(128, 23);
+            this.RemainingTimeProgressBar.Size = new System.Drawing.Size(128, 16);
             this.RemainingTimeProgressBar.Step = 1;
             this.RemainingTimeProgressBar.TabIndex = 9;
             // 
