@@ -32,6 +32,7 @@ namespace MyPrototype.CountdownTimer.view
         public CountdownTimerForm()
         {
             InitializeComponent();
+            this.Height = 128;
             ActiveControl = PomodoroButton;
 
             _countdownTimerFormViewModel = new viewmodel.CountdownTimerFormViewModel(0);
