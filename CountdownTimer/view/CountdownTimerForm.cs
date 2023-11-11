@@ -32,7 +32,7 @@ namespace MyPrototype.CountdownTimer.view
         public CountdownTimerForm()
         {
             InitializeComponent();
-            this.Height = 128;
+            this.Height = 138;
             ActiveControl = PomodoroButton;
 
             _countdownTimerFormViewModel = new viewmodel.CountdownTimerFormViewModel(0);
@@ -202,5 +202,10 @@ namespace MyPrototype.CountdownTimer.view
             MessageBox.Show("It's time.", "synchronous mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
+
+        private void exitXToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
