@@ -33,6 +33,7 @@ namespace MyPrototype.CountdownTimer.view
         {
             InitializeComponent();
             this.Height = 138;
+            this.Width = 170;
             ActiveControl = PomodoroButton;
 
             _countdownTimerFormViewModel = new viewmodel.CountdownTimerFormViewModel(0);
@@ -62,6 +63,54 @@ namespace MyPrototype.CountdownTimer.view
         {
             SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
             simpleSound.Play();
+        }
+
+        /// <summary>
+        /// pomodoro start or resume
+        /// </summary>
+        private void _StartPomodoro()
+        {
+            if (_pomodoroTimer != null)
+            {
+                Debug.WriteLine("The timer has already started.");
+                _pomodoroTimer.Start();
+                return;
+            }
+
+            _pomodoroTimer = new System.Timers.Timer(1000);
+            _pomodoroTimer.Elapsed += PomodoroTimer_Elapsed;
+            _pomodoroTimer.AutoReset = true;
+            _pomodoroTimer.Enabled = true;
+        }
+
+        /// <summary>
+        /// pause the timer countdown
+        /// </summary>
+        private void _PausePomodoro()
+        {
+            if (_pomodoroTimer == null)
+            {
+                Debug.WriteLine("The timer has not started.");
+                return;
+            }
+
+            _pomodoroTimer.Stop();
+        }
+
+        /// <summary>
+        /// reset the remaining time and stop the timer countdown
+        /// </summary>
+        private void _ResetPomodoro()
+        {
+            if (_pomodoroTimer != null)
+            {
+                _pomodoroTimer.Stop();
+                _pomodoroTimer.Dispose();
+                _pomodoroTimer = null;
+            }
+
+            _countdownTimerFormViewModel.SetTime(0);
+            _executionCount = 0;
         }
 
         #region event
@@ -116,51 +165,27 @@ namespace MyPrototype.CountdownTimer.view
         /// <param name="e"></param>
         private void PomodoroButton_Click(object sender, EventArgs e)
         {
-            if (_pomodoroTimer != null)
-            {
-                Debug.WriteLine("The timer has already started.");
-                _pomodoroTimer.Start();
-                return;
-            }
-
-            _pomodoroTimer = new System.Timers.Timer(1000);
-            _pomodoroTimer.Elapsed += PomodoroTimer_Elapsed;
-            _pomodoroTimer.AutoReset = true;
-            _pomodoroTimer.Enabled = true;
+            _StartPomodoro();
         }
 
         /// <summary>
-        /// pause the timer countdown
+        /// pause the timer countdown button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PauseButton_Click(object sender, EventArgs e)
         {
-            if (_pomodoroTimer == null)
-            {
-                Debug.WriteLine("The timer has not started.");
-                return;
-            }
-
-            _pomodoroTimer.Stop();
+            _PausePomodoro();
         }
 
         /// <summary>
-        /// reset the remaining time and stop the timer countdown
+        /// reset the remaining time and stop the timer countdown button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            if (_pomodoroTimer != null)
-            {
-                _pomodoroTimer.Stop();
-                _pomodoroTimer.Dispose();
-                _pomodoroTimer = null;
-            }
-
-            _countdownTimerFormViewModel.SetTime(0);
-            _executionCount = 0;
+            _ResetPomodoro();
         }
 
         /// <summary>
@@ -203,9 +228,44 @@ namespace MyPrototype.CountdownTimer.view
         }
         #endregion
 
-        private void exitXToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// exit menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        /// <summary>
+        /// start pomodoro menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _StartPomodoro();
+        }
+
+        /// <summary>
+        /// pause menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _PausePomodoro();
+        }
+
+        /// <summary>
+        /// reset menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ResetPomodoro();
         }
     }
 }
