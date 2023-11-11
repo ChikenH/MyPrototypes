@@ -47,7 +47,7 @@
             // 
             this.RemainingTimeText.AutoSize = true;
             this.RemainingTimeText.Font = new System.Drawing.Font("Comic Sans MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemainingTimeText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(81)))), ((int)(((byte)(129)))));
+            this.RemainingTimeText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(90)))), ((int)(((byte)(66)))));
             this.RemainingTimeText.Location = new System.Drawing.Point(19, 26);
             this.RemainingTimeText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.RemainingTimeText.Name = "RemainingTimeText";
@@ -71,9 +71,9 @@
             // 
             // ResetButton
             // 
-            this.ResetButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(117)))), ((int)(((byte)(165)))));
+            this.ResetButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(203)))), ((int)(((byte)(60)))));
             this.ResetButton.Font = new System.Drawing.Font("メイリオ", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ResetButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(239)))), ((int)(((byte)(229)))));
+            this.ResetButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(90)))), ((int)(((byte)(66)))));
             this.ResetButton.Location = new System.Drawing.Point(240, 58);
             this.ResetButton.Margin = new System.Windows.Forms.Padding(5);
             this.ResetButton.Name = "ResetButton";
@@ -85,9 +85,9 @@
             // 
             // PauseButton
             // 
-            this.PauseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(117)))), ((int)(((byte)(165)))));
+            this.PauseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(203)))), ((int)(((byte)(60)))));
             this.PauseButton.Font = new System.Drawing.Font("メイリオ", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.PauseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(239)))), ((int)(((byte)(229)))));
+            this.PauseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(90)))), ((int)(((byte)(66)))));
             this.PauseButton.Location = new System.Drawing.Point(176, 58);
             this.PauseButton.Margin = new System.Windows.Forms.Padding(5);
             this.PauseButton.Name = "PauseButton";
@@ -99,7 +99,7 @@
             // 
             // PomodoroButton
             // 
-            this.PomodoroButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(81)))), ((int)(((byte)(129)))));
+            this.PomodoroButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(90)))), ((int)(((byte)(66)))));
             this.PomodoroButton.Font = new System.Drawing.Font("メイリオ", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.PomodoroButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(239)))), ((int)(((byte)(229)))));
             this.PomodoroButton.Location = new System.Drawing.Point(176, 26);
@@ -146,6 +146,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(234)))), ((int)(((byte)(241)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.WToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -180,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(239)))), ((int)(((byte)(229)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(234)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(320, 138);
             this.Controls.Add(this.RemainingTimeProgressBar);
             this.Controls.Add(this.TimeSetButton);
