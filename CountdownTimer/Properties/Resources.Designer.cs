@@ -59,5 +59,15 @@ namespace MyPrototype.CountdownTimer.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Icon pomodoro {
+            get {
+                object obj = ResourceManager.GetObject("pomodoro", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
