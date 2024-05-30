@@ -27,6 +27,11 @@ namespace MyPrototype.CountdownTimer.view
         private viewmodel.CountdownTimerFormViewModel _countdownTimerFormViewModel = null;
 
         /// <summary>
+        /// initial value of the time picker
+        /// </summary>
+        private string _initialTimePickerText = "10:00";
+
+        /// <summary>
         /// timer view constructor
         /// </summary>
         public CountdownTimerForm()
@@ -42,6 +47,8 @@ namespace MyPrototype.CountdownTimer.view
             RemainingTimeText.DataBindings.Add("Text", _countdownTimerFormViewModel, "RemainingTimeText");
             RemainingTimeProgressBar.DataBindings.Add("Maximum", _countdownTimerFormViewModel, "RemainingTimeProgressBarMax");
             RemainingTimeProgressBar.DataBindings.Add("Value", _countdownTimerFormViewModel, "RemainingTimeProgressBarValue");
+
+            CustomTimePicker.Text = _initialTimePickerText;
         }
 
         /// <summary>
@@ -111,6 +118,25 @@ namespace MyPrototype.CountdownTimer.view
 
             _countdownTimerFormViewModel.SetTime(0);
             _executionCount = 0;
+        }
+
+        /// <summary>
+        /// pause or restart the timer
+        /// </summary>
+        private void _PauseOrRestartPomodoro()
+        {
+            if (_pomodoroTimer == null)
+            {
+                _StartPomodoro();
+            }
+            else if (_pomodoroTimer.Enabled)
+            {
+                _PausePomodoro();
+            }
+            else
+            {
+                _StartPomodoro();
+            }
         }
 
         #region event
@@ -196,6 +222,8 @@ namespace MyPrototype.CountdownTimer.view
         private void TimeSetButton_Click(object sender, EventArgs e)
         {
             string customTime = CustomTimePicker.Text;
+            Debug.WriteLine($"CustomTimePicker.Text -> {customTime}");
+
             string[] timeSplit = customTime.Split(':');
             short setTime = (short)((Convert.ToInt32(timeSplit[0]) * 60) + Convert.ToInt32(timeSplit[1]));
 
@@ -266,6 +294,16 @@ namespace MyPrototype.CountdownTimer.view
         private void StopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ResetPomodoro();
+        }
+
+        /// <summary>
+        /// pause or restart pomodoro menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemainingTimeText_Click(object sender, EventArgs e)
+        {
+            _PauseOrRestartPomodoro();
         }
     }
 }

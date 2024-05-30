@@ -59,6 +59,7 @@
             this.RemainingTimeText.TabIndex = 1;
             this.RemainingTimeText.Text = "--:--";
             this.RemainingTimeText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.RemainingTimeText.Click += new System.EventHandler(this.RemainingTimeText_Click);
             // 
             // StartButton
             // 
@@ -117,7 +118,7 @@
             // 
             // CustomTimePicker
             // 
-            this.CustomTimePicker.CustomFormat = "mm:ss";
+            this.CustomTimePicker.CustomFormat = "HH:mm";
             this.CustomTimePicker.Font = new System.Drawing.Font("メイリオ", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CustomTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.CustomTimePicker.Location = new System.Drawing.Point(16, 102);
