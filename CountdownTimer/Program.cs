@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MyPrototype.CountdownTimer
+//namespace MyPrototype.CountdownTimer
+namespace MyPrototype
 {
     internal static class Program
     {
@@ -13,7 +14,8 @@ namespace MyPrototype.CountdownTimer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new view.CountdownTimerForm());
+            //Application.Run(new view.CountdownTimerForm());
+            Application.Run(new CountdownTimer.view.CountdownTimerForm());
         }
     }
 }

@@ -32,13 +32,28 @@ namespace MyPrototype.CountdownTimer.view
         private string _initialTimePickerText = "10:00";
 
         /// <summary>
+        /// define minimum height of display
+        /// </summary>
+        private const short _minimumDisplayHeight = 138;
+
+        /// <summary>
+        /// define maximum height of display
+        /// </summary>
+        private const short _maximumDisplayHeight = 176;
+
+        /// <summary>
+        /// define minimum width of display
+        /// </summary>
+        private const short _minimumDisplayWidth = 170;
+
+        /// <summary>
         /// timer view constructor
         /// </summary>
         public CountdownTimerForm()
         {
             InitializeComponent();
-            this.Height = 138;
-            this.Width = 170;
+            this.Height = _minimumDisplayHeight;
+            this.Width = _minimumDisplayWidth;
             ActiveControl = PomodoroButton;
 
             _countdownTimerFormViewModel = new viewmodel.CountdownTimerFormViewModel(0);
@@ -294,6 +309,25 @@ namespace MyPrototype.CountdownTimer.view
         private void StopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ResetPomodoro();
+        }
+
+        /// <summary>
+        /// resize menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResizeDisplayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ResizeToolStripMenuItem.Checked)
+            {
+                this.Top -= _maximumDisplayHeight - _minimumDisplayHeight;
+                this.Height = _maximumDisplayHeight;
+            }
+            else
+            {
+                this.Height = _minimumDisplayHeight;
+                this.Top += _maximumDisplayHeight - _minimumDisplayHeight;
+            }
         }
 
         /// <summary>
