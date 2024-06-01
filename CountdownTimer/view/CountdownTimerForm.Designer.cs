@@ -58,7 +58,7 @@
             this.RemainingTimeText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.RemainingTimeText.Name = "RemainingTimeText";
             this.RemainingTimeText.Size = new System.Drawing.Size(121, 49);
-            this.RemainingTimeText.TabIndex = 1;
+            this.RemainingTimeText.TabIndex = 2;
             this.RemainingTimeText.Text = "--:--";
             this.RemainingTimeText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.RemainingTimeText.Click += new System.EventHandler(this.RemainingTimeText_Click);
@@ -71,7 +71,7 @@
             this.StartButton.Margin = new System.Windows.Forms.Padding(5);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(128, 32);
-            this.StartButton.TabIndex = 2;
+            this.StartButton.TabIndex = 0;
             this.StartButton.Text = "Synchronous Start";
             this.StartButton.UseVisualStyleBackColor = true;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
@@ -87,7 +87,7 @@
             this.ResetButton.Margin = new System.Windows.Forms.Padding(5);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(64, 30);
-            this.ResetButton.TabIndex = 3;
+            this.ResetButton.TabIndex = 6;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
@@ -119,7 +119,7 @@
             this.PomodoroButton.Margin = new System.Windows.Forms.Padding(5);
             this.PomodoroButton.Name = "PomodoroButton";
             this.PomodoroButton.Size = new System.Drawing.Size(132, 30);
-            this.PomodoroButton.TabIndex = 6;
+            this.PomodoroButton.TabIndex = 4;
             this.PomodoroButton.Text = "Start-Pomodoro";
             this.PomodoroButton.UseVisualStyleBackColor = false;
             this.PomodoroButton.Click += new System.EventHandler(this.PomodoroButton_Click);
@@ -159,7 +159,7 @@
             this.RemainingTimeProgressBar.Name = "RemainingTimeProgressBar";
             this.RemainingTimeProgressBar.Size = new System.Drawing.Size(128, 16);
             this.RemainingTimeProgressBar.Step = 1;
-            this.RemainingTimeProgressBar.TabIndex = 9;
+            this.RemainingTimeProgressBar.TabIndex = 3;
             // 
             // menuStrip1
             // 
@@ -170,7 +170,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(320, 24);
-            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // FileToolStripMenuItem

@@ -2,15 +2,15 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
+// アセンブリに関する一般的な情報は、次の方法で制御されます
 // 制御されます。アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更します。
-[assembly: AssemblyTitle("CountdownTimer")]
+[assembly: AssemblyTitle("SelectMenu")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CountdownTimer")]
-[assembly: AssemblyCopyright("Copyright ©  2023-2024")]
+[assembly: AssemblyProduct("SelectMenu")]
+[assembly: AssemblyCopyright("Copyright © 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // このプロジェクトが COM に公開される場合、次の GUID が typelib の ID になります
-[assembly: Guid("aa8484a6-c340-4154-8041-a13415d10d8e")]
+[assembly: Guid("ee635e2b-c80a-473e-bb50-bf6ea6d26bd9")]
 
 // アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
 //
@@ -32,8 +32,5 @@ using System.Runtime.InteropServices;
 // すべての値を指定するか、次を使用してビルド番号とリビジョン番号を既定に設定できます
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.6.1.0")]
-[assembly: AssemblyFileVersion("1.6.1.0")]
-
-// Internal なクラスを参照可能とする AssemblyTitle を記述
-[assembly: InternalsVisibleTo("CountdownTimerTest")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

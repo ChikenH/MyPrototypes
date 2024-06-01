@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MyPrototype.CountdownTimer
+namespace MyPrototype.SelectMenu
 {
     internal static class Program
     {
@@ -13,7 +16,11 @@ namespace MyPrototype.CountdownTimer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new view.CountdownTimerForm());
+#if DEBUG
+            Application.Run(new Form1());
+#else
+            Application.Run(new MyPrototype.CountdownTimer.view.CountdownTimerForm());
+#endif
         }
     }
 }
