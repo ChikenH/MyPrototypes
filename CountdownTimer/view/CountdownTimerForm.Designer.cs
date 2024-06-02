@@ -65,7 +65,9 @@
             // 
             // StartButton
             // 
+            this.StartButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(180)))), ((int)(((byte)(166)))));
             this.StartButton.Cursor = System.Windows.Forms.Cursors.No;
+            this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartButton.Font = new System.Drawing.Font("メイリオ", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.StartButton.Location = new System.Drawing.Point(176, 100);
             this.StartButton.Margin = new System.Windows.Forms.Padding(5);
@@ -73,7 +75,7 @@
             this.StartButton.Size = new System.Drawing.Size(128, 32);
             this.StartButton.TabIndex = 0;
             this.StartButton.Text = "Synchronous Start";
-            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.UseVisualStyleBackColor = false;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // ResetButton

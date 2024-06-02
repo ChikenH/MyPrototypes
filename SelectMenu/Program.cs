@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyPrototype.SelectMenu
@@ -17,7 +14,7 @@ namespace MyPrototype.SelectMenu
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 #if DEBUG
-            Application.Run(new Form1());
+            Application.Run(new SelectMenuForm());
 #else
             Application.Run(new MyPrototype.CountdownTimer.view.CountdownTimerForm());
 #endif

@@ -185,6 +185,7 @@ namespace MyPrototype.CountdownTimer.view
                 });
 
                 _executionCount++;
+                Debug.WriteLine($"_executionCount -> {_executionCount}");
                 if (_executionCount <= 1)
                 {
                     return;
@@ -243,6 +244,7 @@ namespace MyPrototype.CountdownTimer.view
             short setTime = (short)((Convert.ToInt32(timeSplit[0]) * 60) + Convert.ToInt32(timeSplit[1]));
 
             _countdownTimerFormViewModel.SetTime(setTime);
+            _executionCount = 1;
         }
 
         /// <summary>
