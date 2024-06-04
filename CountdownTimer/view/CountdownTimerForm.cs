@@ -9,7 +9,7 @@ namespace MyPrototype.CountdownTimer.view
     /// <summary>
     /// timer view
     /// </summary>
-    public partial class CountdownTimerForm : Form
+    public sealed partial class CountdownTimerForm : Form
     {
         /// <summary>
         /// timer

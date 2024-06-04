@@ -1,30 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using MyPrototype.CountdownTimer.view;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyPrototype.SelectMenu
 {
-    public partial class SelectMenuForm : Form
+    /// <summary>
+    /// select menu form
+    /// </summary>
+    public sealed partial class SelectMenuForm : Form
     {
+        /// <summary>
+        /// timer view instance (singleton pattern)
+        /// </summary>
+        private static CountdownTimer.view.CountdownTimerForm _countdownTimerForm;
+
+        /// <summary>
+        /// select menu form constructor
+        /// </summary>
         public SelectMenuForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// timer view property
+        /// </summary>
+        public CountdownTimer.view.CountdownTimerForm CountdownTimerInstance
+        {
+            get
+            {
+                if (_countdownTimerForm == null || _countdownTimerForm.IsDisposed)
+                {
+                    _countdownTimerForm = new MyPrototype.CountdownTimer.view.CountdownTimerForm();
+                }
+                return _countdownTimerForm;
+            }
+        }
+
+        /// <summary>
+        /// determine if the timer view instance is valid
+        /// </summary>
+        /// <returns>Instance startup status(true or false)</returns>
+        private bool _isValidFormInstance()
+        {
+            if (_countdownTimerForm == null || _countdownTimerForm.IsDisposed)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// activate the pomodoro timer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void RunPomodoroButton_Click(object sender, EventArgs e)
         {
+            if (_isValidFormInstance())
+            {
+                return;
+            }
+
             // FixMe: Correct code as exception occurs on second run.
             await Task.Run(() =>
             {
-                Application.Run(new MyPrototype.CountdownTimer.view.CountdownTimerForm());
+                Application.Run(CountdownTimerInstance);
             });
-
         }
     }
 }
