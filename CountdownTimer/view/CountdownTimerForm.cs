@@ -64,6 +64,7 @@ namespace MyPrototype.CountdownTimer.view
             RemainingTimeProgressBar.DataBindings.Add("Value", _countdownTimerFormViewModel, "RemainingTimeProgressBarValue");
 
             CustomTimePicker.Text = _initialTimePickerText;
+            _ResetPomodoro();
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using MyPrototype.CountdownTimer.view;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,7 +31,7 @@ namespace MyPrototype.SelectMenu
         {
             get
             {
-                if (_countdownTimerForm == null || _countdownTimerForm.IsDisposed)
+                if (!_isValidFormInstance())
                 {
                     _countdownTimerForm = new MyPrototype.CountdownTimer.view.CountdownTimerForm();
                 }
@@ -60,6 +61,7 @@ namespace MyPrototype.SelectMenu
         {
             if (_isValidFormInstance())
             {
+                Debug.WriteLine("The Pomodoro timer has already been activated.");
                 return;
             }
 
