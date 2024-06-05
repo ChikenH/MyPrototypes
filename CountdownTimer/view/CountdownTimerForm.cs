@@ -64,6 +64,8 @@ namespace MyPrototype.CountdownTimer.view
             RemainingTimeProgressBar.DataBindings.Add("Value", _countdownTimerFormViewModel, "RemainingTimeProgressBarValue");
 
             CustomTimePicker.Text = _initialTimePickerText;
+
+            // support multiple activations
             _ResetPomodoro();
         }
 
@@ -173,31 +175,40 @@ namespace MyPrototype.CountdownTimer.view
         /// <param name="e"></param>
         private async void PomodoroTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (RemainingTimeText.Text == "--:--")
+            try
             {
-                Debug.WriteLine($"{_executionCount} -> {_executionCount % 2}");
-                // pomodoro loop (25 -> 5 -> 25 -> ...)
-                short times = _executionCount % 2 == 0 ? (short)(60 * 25) : (short)(60 * 5);
-
-                await Task.Run(() =>
+                if (RemainingTimeText.Text == "--:--")
                 {
-                    Action<short> methodSetTime = new Action<short>(delegate (short x) { _countdownTimerFormViewModel.SetTime(x); });
-                    return Invoke(methodSetTime, times);
-                });
+                    Debug.WriteLine($"{_executionCount} -> {_executionCount % 2}");
+                    // pomodoro loop (25 -> 5 -> 25 -> ...)
+                    short times = _executionCount % 2 == 0 ? (short)(60 * 25) : (short)(60 * 5);
 
-                _executionCount++;
-                Debug.WriteLine($"_executionCount -> {_executionCount}");
-                if (_executionCount <= 1)
-                {
-                    return;
+                    await Task.Run(() =>
+                    {
+                        Action<short> methodSetTime = new Action<short>(delegate (short x) { _countdownTimerFormViewModel.SetTime(x); });
+                        return Invoke(methodSetTime, times);
+                    });
+
+                    _executionCount++;
+                    Debug.WriteLine($"_executionCount -> {_executionCount}");
+                    if (_executionCount <= 1)
+                    {
+                        return;
+                    }
+
+                    _PlaySimpleSound();
+                    MessageBox.Show("It's time.", "Pomodoro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                _PlaySimpleSound();
-                MessageBox.Show("It's time.", "Pomodoro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                {
+                    await Task.Run(() => Invoke(new Action(_countdownTimerFormViewModel.DecrementByOneSecond)));
+                }
             }
-            else
+            catch (Exception ex)
             {
-                await Task.Run(() => Invoke(new Action(_countdownTimerFormViewModel.DecrementByOneSecond)));
+                // catch exceptions when closing forms
+                Debug.WriteLine($"PomodoroTimer_Elapsed_Exception: {ex.Message}");
+                _PausePomodoro();
             }
         }
 

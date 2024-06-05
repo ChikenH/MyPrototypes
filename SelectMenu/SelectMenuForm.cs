@@ -65,7 +65,6 @@ namespace MyPrototype.SelectMenu
                 return;
             }
 
-            // FixMe: Correct code as exception occurs on second run.
             await Task.Run(() =>
             {
                 Application.Run(CountdownTimerInstance);
