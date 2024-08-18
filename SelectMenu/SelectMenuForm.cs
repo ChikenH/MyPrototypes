@@ -1,4 +1,5 @@
 ﻿using MyPrototype.CountdownTimer.view;
+using MyPrototype.PDFViewer;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -17,6 +18,11 @@ namespace MyPrototype.SelectMenu
         private static CountdownTimer.view.CountdownTimerForm _countdownTimerForm;
 
         /// <summary>
+        /// pdf viewer instance (singleton pattern)
+        /// </summary>
+        private static PDFViewer.PDFViewerForm _pdfViewerForm;
+
+        /// <summary>
         /// select menu form constructor
         /// </summary>
         public SelectMenuForm()
@@ -31,7 +37,7 @@ namespace MyPrototype.SelectMenu
         {
             get
             {
-                if (!_isValidFormInstance())
+                if (!_IsValidFormInstance(_countdownTimerForm))
                 {
                     _countdownTimerForm = new MyPrototype.CountdownTimer.view.CountdownTimerForm();
                 }
@@ -40,12 +46,28 @@ namespace MyPrototype.SelectMenu
         }
 
         /// <summary>
-        /// determine if the timer view instance is valid
+        /// pdf viewer view property
         /// </summary>
-        /// <returns>Instance startup status(true or false)</returns>
-        private bool _isValidFormInstance()
+        public PDFViewer.PDFViewerForm PDFViewerInstance
         {
-            if (_countdownTimerForm == null || _countdownTimerForm.IsDisposed)
+            get
+            {
+                if (!_IsValidFormInstance(_pdfViewerForm))
+                {
+                    _pdfViewerForm = new PDFViewer.PDFViewerForm();
+                }
+                return _pdfViewerForm;
+            }
+        }
+
+        /// <summary>
+        /// determine if form instance is valid
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns>Instance startup status(true or false)</returns>
+        private bool _IsValidFormInstance(Form form)
+        {
+            if (form == null || form.IsDisposed)
             {
                 return false;
             }
@@ -59,7 +81,7 @@ namespace MyPrototype.SelectMenu
         /// <param name="e"></param>
         private async void RunPomodoroButton_Click(object sender, EventArgs e)
         {
-            if (_isValidFormInstance())
+            if (_IsValidFormInstance(_countdownTimerForm))
             {
                 Debug.WriteLine("The Pomodoro timer has already been activated.");
                 return;
@@ -68,6 +90,25 @@ namespace MyPrototype.SelectMenu
             await Task.Run(() =>
             {
                 Application.Run(CountdownTimerInstance);
+            });
+        }
+
+        /// <summary>
+        /// activate the pdf viewer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void RunPDFViewerButtion_Click(object sender, EventArgs e)
+        {
+            if (_IsValidFormInstance(_pdfViewerForm))
+            {
+                Debug.WriteLine("The PDF viewer has already been activated.");
+                return;
+            }
+
+            await Task.Run(() =>
+            {
+                Application.Run(PDFViewerInstance);
             });
         }
     }

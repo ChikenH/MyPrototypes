@@ -30,12 +30,14 @@
         {
             this.RunPomodoroButton = new System.Windows.Forms.Button();
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.RunPDFViewerButtion = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // RunPomodoroButton
             // 
             this.RunPomodoroButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(57)))), ((int)(((byte)(76)))));
+            this.RunPomodoroButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(57)))), ((int)(((byte)(76)))));
             this.RunPomodoroButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RunPomodoroButton.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.RunPomodoroButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
@@ -49,12 +51,28 @@
             // 
             // MenuPanel
             // 
+            this.MenuPanel.Controls.Add(this.RunPDFViewerButtion);
             this.MenuPanel.Controls.Add(this.RunPomodoroButton);
             this.MenuPanel.Location = new System.Drawing.Point(8, 8);
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(0);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(128, 80);
             this.MenuPanel.TabIndex = 1;
+            // 
+            // RunPDFViewerButtion
+            // 
+            this.RunPDFViewerButtion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
+            this.RunPDFViewerButtion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(57)))), ((int)(((byte)(76)))));
+            this.RunPDFViewerButtion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RunPDFViewerButtion.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.RunPDFViewerButtion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(57)))), ((int)(((byte)(76)))));
+            this.RunPDFViewerButtion.Location = new System.Drawing.Point(0, 32);
+            this.RunPDFViewerButtion.Name = "RunPDFViewerButtion";
+            this.RunPDFViewerButtion.Size = new System.Drawing.Size(128, 32);
+            this.RunPDFViewerButtion.TabIndex = 1;
+            this.RunPDFViewerButtion.Text = "PDF Viewer";
+            this.RunPDFViewerButtion.UseVisualStyleBackColor = false;
+            this.RunPDFViewerButtion.Click += new System.EventHandler(this.RunPDFViewerButtion_Click);
             // 
             // SelectMenuForm
             // 
@@ -78,6 +96,7 @@
 
         private System.Windows.Forms.Button RunPomodoroButton;
         private System.Windows.Forms.Panel MenuPanel;
+        private System.Windows.Forms.Button RunPDFViewerButtion;
     }
 }
 
