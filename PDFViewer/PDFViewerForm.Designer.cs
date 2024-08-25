@@ -36,12 +36,13 @@
             // WebView2Button
             // 
             this.WebView2Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(168)))), ((int)(((byte)(134)))));
+            this.WebView2Button.Dock = System.Windows.Forms.DockStyle.Top;
             this.WebView2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.WebView2Button.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.WebView2Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(109)))));
-            this.WebView2Button.Location = new System.Drawing.Point(8, 8);
+            this.WebView2Button.Location = new System.Drawing.Point(0, 0);
             this.WebView2Button.Name = "WebView2Button";
-            this.WebView2Button.Size = new System.Drawing.Size(64, 30);
+            this.WebView2Button.Size = new System.Drawing.Size(784, 30);
             this.WebView2Button.TabIndex = 2;
             this.WebView2Button.Text = "View";
             this.WebView2Button.UseVisualStyleBackColor = false;
@@ -53,9 +54,10 @@
             this.ViewerWebView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(188)))), ((int)(((byte)(164)))));
             this.ViewerWebView2.CreationProperties = null;
             this.ViewerWebView2.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.ViewerWebView2.Location = new System.Drawing.Point(8, 46);
+            this.ViewerWebView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ViewerWebView2.Location = new System.Drawing.Point(0, 30);
             this.ViewerWebView2.Name = "ViewerWebView2";
-            this.ViewerWebView2.Size = new System.Drawing.Size(592, 480);
+            this.ViewerWebView2.Size = new System.Drawing.Size(784, 1131);
             this.ViewerWebView2.TabIndex = 3;
             this.ViewerWebView2.ZoomFactor = 1D;
             // 
@@ -64,7 +66,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(109)))));
-            this.ClientSize = new System.Drawing.Size(616, 601);
+            this.ClientSize = new System.Drawing.Size(784, 1161);
             this.Controls.Add(this.ViewerWebView2);
             this.Controls.Add(this.WebView2Button);
             this.MinimizeBox = false;

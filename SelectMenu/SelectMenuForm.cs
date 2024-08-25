@@ -18,11 +18,6 @@ namespace MyPrototype.SelectMenu
         private static CountdownTimer.view.CountdownTimerForm _countdownTimerForm;
 
         /// <summary>
-        /// pdf viewer instance (singleton pattern)
-        /// </summary>
-        private static PDFViewer.PDFViewerForm _pdfViewerForm;
-
-        /// <summary>
         /// select menu form constructor
         /// </summary>
         public SelectMenuForm()
@@ -42,21 +37,6 @@ namespace MyPrototype.SelectMenu
                     _countdownTimerForm = new MyPrototype.CountdownTimer.view.CountdownTimerForm();
                 }
                 return _countdownTimerForm;
-            }
-        }
-
-        /// <summary>
-        /// pdf viewer view property
-        /// </summary>
-        public PDFViewer.PDFViewerForm PDFViewerInstance
-        {
-            get
-            {
-                if (!_IsValidFormInstance(_pdfViewerForm))
-                {
-                    _pdfViewerForm = new PDFViewer.PDFViewerForm();
-                }
-                return _pdfViewerForm;
             }
         }
 
@@ -98,18 +78,12 @@ namespace MyPrototype.SelectMenu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void RunPDFViewerButtion_Click(object sender, EventArgs e)
+        private void RunPDFViewerButtion_Click(object sender, EventArgs e)
         {
-            if (_IsValidFormInstance(_pdfViewerForm))
+            using (var f = new PDFViewer.PDFViewerForm())
             {
-                Debug.WriteLine("The PDF viewer has already been activated.");
-                return;
+                f.ShowDialog();
             }
-
-            await Task.Run(() =>
-            {
-                Application.Run(PDFViewerInstance);
-            });
         }
     }
 }
