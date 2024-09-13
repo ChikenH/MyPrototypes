@@ -128,7 +128,7 @@
             // 
             // CustomTimePicker
             // 
-            this.CustomTimePicker.CustomFormat = "HH:mm";
+            this.CustomTimePicker.CustomFormat = "mm:ss";
             this.CustomTimePicker.Font = new System.Drawing.Font("メイリオ", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.CustomTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.CustomTimePicker.Location = new System.Drawing.Point(16, 102);
