@@ -1,5 +1,6 @@
 ﻿using MyPrototype.CountdownTimer.view;
 using MyPrototype.PDFViewer;
+using MyPrototype.Browser;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -81,6 +82,19 @@ namespace MyPrototype.SelectMenu
         private void RunPDFViewerButtion_Click(object sender, EventArgs e)
         {
             using (var f = new PDFViewer.PDFViewerForm())
+            {
+                f.ShowDialog();
+            }
+        }
+
+        /// <summary>
+        /// activate browser
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RunBrowserButtion_Click(object sender, EventArgs e)
+        {
+            using (var f = new Browser.BrowserForm())
             {
                 f.ShowDialog();
             }
