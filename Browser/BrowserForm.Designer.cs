@@ -34,6 +34,7 @@
             // StartBrowserButton
             // 
             this.StartBrowserButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(87)))), ((int)(((byte)(50)))));
+            this.StartBrowserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartBrowserButton.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.StartBrowserButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(212)))));
             this.StartBrowserButton.Location = new System.Drawing.Point(8, 8);
